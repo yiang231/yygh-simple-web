@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Document</title>
+</head>
+<body>
+<script>//let和var声明变量
+//var 可以声明多次
+var m = 1
+var m = 2
+console.log(m)
+
+// var 声明的变量没有局部作用域
+{
+    var name = 'jack'
+    console.log(name)
+}
+console.log(name)
+
+//let不允许重复声明一个变量
+let n = 10
+// let n = 20
+
+//let声明的变量有作用域
+{
+    let username = 'rose'
+}
+console.log(username)
+</script>
+
+
+<script>//const声明常量（只读变量）
+
+// 1、声明之后不允许改变
+const count = 10
+count = 11
+console.log(count)
+
+// 2、一但声明必须初始化，否则会报错
+// const a
+var aaa
+let bbb
+</script>
+
+
+<script>//解构赋值 ：  针对数组或对象，进行模式匹配，赋值
+// let q = 1,w=2,e=3
+let [q, w, e] = [1, 2, 3]
+console.log(q, w, e)
+
+let user = {username: 'jack', userage: 20}
+
+// let username = user.username
+// let userage = user.userage
+
+// let username1 = user.username
+// let userage1 = user.userage
+
+//对象解构赋值
+let {username1, userage1} = user //模式匹配  对象中的属性名必须和等号左边的变量名一致
+
+console.log(username1, userage1)
+</script>
+
+<script>//模板字符串
+// var str1 = 'hello vue'
+// var str2 = "hello "+str1+" vue" + str1
+// console.log(str2)
+
+
+//模板字符串  ``
+// 可以进行换行
+// var str2 = 'hello
+//  vue'
+let str = `hello
+         vue`
+//字符串插入变量和表达式。变量名写在 ${} 中，${} 中可以放入 JavaScript 表达式。
+var s1 = 'hello'
+var s2 = `${s1} world ${add(10, 20)}`
+
+console.log(s2)
+
+// 3、字符串中调用函数
+function add(m, n) {
+    return m + n
+}
+
+</script>
+
+
+<script>//声明对象简写
+var name = 'tom'
+var age = 10
+var student = {name1: name, age1: age}
+console.log(student)
+
+//声明对象简写
+var student2 = {name, age}
+console.log(student2)//{name: 'tom', age: 10}
+
+</script>
+
+
+<script>//定义方法简写
+
+//计算器对象
+let cal = {
+    add: function (m, n) {
+        return m + n
+    },
+    sub: function (m, n) {
+        return m - n
+    }
+}
+
+let cal2 = {
+    add(m, n) {
+        return m + n
+    },
+    sub(m, n) {
+        return m - n
+    }
+}
+
+console.log(cal2.add(10, 2))
+console.log(cal2.sub(10, 2))
+
+</script>
+
+
+<script>//对象扩展运算符
+var emp = {name: 'jack', age: 18}
+
+//复制对象
+var emp2 = {...emp} // 对象扩展运算符 ... 对象名称 ， 对当前对象所有可遍历属性，赋值
+
+console.log(emp2)
+
+//合并对象
+var emp3 = {addr: 'bj', tel: '1111'}
+
+var emp4 = {...emp, ...emp3}
+console.log(emp4)
+</script>
+
+
+<script>//箭头函数用于匿名函数的定义
+var div = function (m, n) {
+    var r = m / n
+    return r
+}
+console.log(div(10, 2))
+
+//箭头函数
+var div2 = function (m, n) {
+    var r = m / n
+    return r
+}
+
+var div3 = (m, n) => {
+    var r = m / n
+    return r
+}
+
+// (参数列表) ，当只有一个参数的时候，小括号可以省略。没有参数或多个参数时，小括号不可以省略
+var div4 = (m) => {
+    var r = m + 1
+    return r
+}
+
+var div5 = m => {
+    var r = m + 1
+    return r
+}
+
+var div6 = m => {
+    return m + 1
+}
+
+var div7 = m => m + 1
+
+
+//大括号{}   方法体只有一条代码并且需要返回值，大括号可以省略
+
+console.log(div7(15))
+
+</script>
+
+</body>
+</html>
