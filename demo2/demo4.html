@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+
+<body>
+<div id="app">
+
+    <span id="msg">{{message}}</span>
+
+    <button @click="update()">下一句</button>
+    </button>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: '床前明月光'
+        },
+        methods: {
+            //普通方法（自定义方法）
+            update() {
+                this.message = '疑是地上霜'
+            },
+            show() {
+                console.log(this.message)
+            }
+        },
+        beforeCreate() {
+            //vue实例创建成功之后调用
+            console.log('beforeCreate')
+            this.show()
+            console.log(this.message)
+        },
+        created() {
+            //vue实例创建成功之后调用
+            console.log('created')
+            this.show()
+            console.log(this.message)
+        },
+        beforeMount() {
+            //根据元素的id获取dom对象
+            console.log(document.getElementById('msg').innerHTML)
+            console.log(this.message)
+        },
+        mounted() {
+            //根据元素的id获取dom对象
+            console.log(document.getElementById('msg').innerHTML)
+            console.log(this.message)
+        },
+        beforeUpdate() {
+            console.log("---beforeUpdate---")
+            //页面更新之前
+            console.log(document.getElementById('msg').innerHTML)//第一句
+            console.log(this.message)//内存中的变量已经变化
+        },
+        updated() {
+            console.log("---beforeUpdate---")
+            //页面更新之前
+            console.log(document.getElementById('msg').innerHTML)//第一句
+            console.log(this.message)//内存中的变量已经变化
+        }
+    })
+</script>
+</body>
+
+</html>

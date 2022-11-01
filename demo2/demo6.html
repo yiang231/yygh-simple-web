@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+
+<body>
+<div id="app">
+    <ul>
+        <li v-for="hospset in list">
+            {{hospset.id}}-{{hospset.hosname}}-{{hospset.hoscode}}
+        </li>
+    </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            list: []
+        },
+        methods: {
+            fetchData() {
+                //axios -->ajax
+                axios.get('http://localhost:8201/admin/hosp/hospitalSet/findAll').then(resp => {
+                    //resp.data = result
+                    this.list = resp.data.data.list
+                })
+            }
+        },
+        created() {
+            this.fetchData()
+        }
+    })
+</script>
+</body>
+
+</html>

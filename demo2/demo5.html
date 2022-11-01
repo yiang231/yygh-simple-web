@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+
+<body>
+<div id="app">
+    <router-link to="/wel">欢迎页</router-link>
+    <router-link to="/emp">员工列表</router-link>
+    <router-link to="/mem">会员列表</router-link>
+
+    <router-view></router-view>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@4"></script>
+
+<script>
+
+    //1、定义三块不同的视图内容
+
+    let welcome = {'template': '<div>欢迎来到xxx系统</div>'}
+    let employee = {
+        'template': `<ul>
+                        <li>张三</li>
+                        <li>李四</li>
+                    </ul>`
+    }
+    let member = {
+        'template': `<ul>
+                        <li>会员张三</li>
+                        <li>会员李四</li>
+                    </ul>`
+    }
+
+    //2、不同的路径映射不同的视图
+    let routes = [
+        {'path': '/', redirect: '/wel'},
+        {'path': '/wel', 'component': welcome},
+        {'path': '/emp', 'component': employee},
+        {'path': '/mem', 'component': member}
+    ]
+
+    //3、创建路由对象
+    let router = new VueRouter(
+        {routes}  // { routers:routes }
+    )
+
+    //4、路由对象挂载到vue实例上
+    new Vue({
+        el: '#app',
+        router
+    })
+</script>
+</body>
+
+</html>
